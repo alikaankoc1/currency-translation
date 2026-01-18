@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/currency.css";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 function Currency() {
+  const [amount, setAmount] = useState(0);
+  const [fromCurrency, setFromCurrency] = useState("");
+  const [toCurrency, setToCurrency] = useState("");
+  const [result, setResult] = useState(0);
   return (
     <div className="currency-div">
       <div className="title-div">
