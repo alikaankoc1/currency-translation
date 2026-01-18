@@ -2,118 +2,209 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 50px;
-  width: 600px;
-  height: 200px;
-  border: 1px solid black;
-}
-.amount {
-  margin-right: 10px;
-  width: 150px;
-  height: 40px;
-}
-.from-currency-option {
-  width: 100px;
-  height: 40px;
-  margin-right: 10px;
-}
-.arrow-right {
-  font-size: 30px;
-  margin-right: 10px;
-  margin-top: 5px;
-}
-.to-currency-option {
-  width: 100px;
-  height: 40px;
-  margin-right: 10px;
-}
-.result {
-  width: 150px;
-  height: 40px;
-}
-.title-div {
-  background-color: black;
+  justify-content: flex-start;
+  gap: 18px;
+  margin: 40px auto;
+  padding: 26px 28px 30px;
+  max-width: 640px;
   width: 100%;
-  height: 20px;
-  margin-bottom: 25px;
-  text-align: center;
-}
-.title-currency {
-  margin-top: -20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 25px;
-  font-weight: bold;
-  background-color: black;
-  color: #fff;
-  padding: 10px;
-}
-.currency-btn {
-  width: 80px;
-  height: 30px;
-  color: white;
-  background-color: rgb(235, 0, 0);
-  border: none;
-  border-radius: 5px;
-  margin-top: 15px;
-  cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #1d4ed8, #020617);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+  box-sizing: border-box;
+  color: #e5e7eb;
 }
 
-/* Responsive Tasarım */
-@media (max-width: 700px) {
+/* Başlık */
+.title-div {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.title-currency {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f9fafb;
+}
+
+/* Form alanları grubu (2. div) */
+.currency-div > div:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Ortak input & select stilleri */
+.amount,
+.result,
+.from-currency-option,
+.to-currency-option {
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  padding: 0 14px;
+  font-size: 15px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    transform 0.08s ease;
+}
+
+.amount,
+.result {
+  width: 170px;
+}
+
+.from-currency-option,
+.to-currency-option {
+  width: 120px;
+}
+
+.amount::placeholder,
+.result::placeholder {
+  color: #9ca3af;
+}
+
+.amount:focus,
+.result:focus,
+.from-currency-option:focus,
+.to-currency-option:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.4);
+  background-color: rgba(15, 23, 42, 0.95);
+  transform: translateY(-1px);
+}
+
+/* Ok ikonu */
+.arrow-right {
+  font-size: 28px;
+  color: #38bdf8;
+}
+
+/* Buton */
+.currency-btn {
+  margin-top: 6px;
+  width: 180px;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #f97316, #dc2626);
+  color: #fef2f2;
+  box-shadow: 0 10px 25px rgba(248, 113, 113, 0.5);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.currency-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(248, 113, 113, 0.7);
+  filter: brightness(1.05);
+}
+
+.currency-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(248, 113, 113, 0.6);
+  opacity: 0.95;
+}
+
+/* Tablet ve aşağısı için düzenler */
+@media (max-width: 900px) {
   .currency-div {
-    width: 95vw;
-    min-width: 0;
-    height: auto;
-    margin: 10px;
-    padding: 10px;
+    margin: 32px 16px;
+    padding-inline: 20px;
   }
-  .amount,
-  .result,
-  .from-currency-option,
-  .to-currency-option {
-    width: 90vw;
-    max-width: 300px;
-    min-width: 100px;
-    height: 35px;
-    margin-bottom: 10px;
+}
+
+/* Küçük ekranlar (telefon) */
+@media (max-width: 600px) {
+  .currency-div {
+    gap: 16px;
   }
-  .arrow-right {
-    font-size: 24px;
-    margin: 10px 0;
-    display: block;
-  }
+
   .title-currency {
     font-size: 20px;
-    padding: 8px;
   }
-  .currency-btn {
-    width: 100%;
-    max-width: 200px;
-    font-size: 16px;
-  }
-}
 
-@media (max-width: 400px) {
-  .currency-div {
-    padding: 2vw;
+  .currency-div > div:nth-of-type(2) {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .title-currency {
-    font-size: 16px;
-    padding: 5px;
-  }
+
   .amount,
   .result,
   .from-currency-option,
   .to-currency-option {
-    width: 80vw;
-    min-width: 60px;
-    font-size: 14px;
+    width: 100%;
   }
+
+  .arrow-right {
+    transform: rotate(90deg);
+    margin: 4px auto;
+  }
+
+  .currency-btn {
+    width: 100%;
+  }
+}
+
+/* Çok küçük ekranlar */
+@media (max-width: 400px) {
+  .currency-div {
+    padding: 18px 14px 22px;
+    border-radius: 16px;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.8);
+  }
+
+  .title-currency {
+    font-size: 18px;
+  }
+
+  .amount,
+  .result,
+  .from-currency-option,
+  .to-currency-option {
+    font-size: 14px;
+    height: 40px;
+  }
+
   .currency-btn {
     font-size: 14px;
-    padding: 6px;
+    height: 40px;
   }
 }

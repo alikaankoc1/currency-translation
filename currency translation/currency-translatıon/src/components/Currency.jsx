@@ -13,11 +13,14 @@ function Currency() {
   const [result, setResult] = useState();
 
   const exChange = async () => {
+    let validAmount = Number(amount);
+    if (amount === "" || isNaN(validAmount) || validAmount < 1) validAmount = 1;
     const response = await axios.get(
       `${BASE_URL}?apikey=${API_KEY}&base_currency=${fromCurrency}`,
     );
-    const result = (response.data.data[toCurrency] * amount).toFixed(2);
-    setResult(result);
+    let calcResult = (response.data.data[toCurrency] * validAmount).toFixed(2);
+    setResult(calcResult);
+    setAmount(validAmount);
   };
   return (
     <div className="currency-div">
@@ -27,8 +30,21 @@ function Currency() {
       <div>
         <input
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(e) => {
+            const val = e.target.value;
+            if (val === "") {
+              setAmount("");
+            } else {
+              const num = Number(val);
+              if (isNaN(num) || num < 1) {
+                setAmount(1);
+              } else {
+                setAmount(num);
+              }
+            }
+          }}
           type="number"
+          min={1}
           className="amount"
         />
         <select
@@ -50,12 +66,7 @@ function Currency() {
           <option>EUR</option>
         </select>
 
-        <input
-          value={result}
-          onChange={(e) => setResult(e.target.value)}
-          type="number"
-          className="result"
-        />
+        <input value={result} readOnly type="number" className="result" />
       </div>
       <div>
         <button onClick={exChange} className="currency-btn">
