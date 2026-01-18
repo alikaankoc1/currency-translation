@@ -1,8 +1,13 @@
 import "./App.css";
 import React from "react";
+import Currency from "./components/Currency";
 
 function App() {
-  return <div>ali</div>;
+  return (
+    <div>
+      <Currency />
+    </div>
+  );
 }
 
 export default App;
