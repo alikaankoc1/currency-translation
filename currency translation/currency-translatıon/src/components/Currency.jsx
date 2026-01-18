@@ -7,16 +7,17 @@ let BASE_URL = "https://api.freecurrencyapi.com/v1/latest";
 let API_KEY = "fca_live_zZj3VnvhStbWzCozWiFWXsVFgpdZ3EUlpjPTJa0b";
 
 function Currency() {
-  const [amount, setAmount] = useState(0);
-  const [fromCurrency, setFromCurrency] = useState("");
-  const [toCurrency, setToCurrency] = useState("");
-  const [result, setResult] = useState(0);
+  const [amount, setAmount] = useState();
+  const [fromCurrency, setFromCurrency] = useState("USD");
+  const [toCurrency, setToCurrency] = useState("TRY");
+  const [result, setResult] = useState();
 
   const exChange = async () => {
     const response = await axios.get(
       `${BASE_URL}?apikey=${API_KEY}&base_currency=${fromCurrency}`,
     );
-    console.log(response.data.data);
+    const result = (response.data.data[toCurrency] * amount).toFixed(2);
+    setResult(result);
   };
   return (
     <div className="currency-div">
@@ -35,7 +36,7 @@ function Currency() {
           className="from-currency-option"
         >
           <option>USD</option>
-          <option>EURO</option>
+          <option>EUR</option>
           <option>TRY</option>
         </select>
         <FaRegArrowAltCircleRight className="arrow-right" />
@@ -45,8 +46,8 @@ function Currency() {
           className="to-currency-option"
         >
           <option>TRY</option>
-          <option>EURO</option>
           <option>USD</option>
+          <option>EUR</option>
         </select>
 
         <input
