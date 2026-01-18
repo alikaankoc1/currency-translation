@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/currency.css";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import axios from "axios";
@@ -7,6 +7,9 @@ let BASE_URL = "https://api.freecurrencyapi.com/v1/latest";
 let API_KEY = "fca_live_zZj3VnvhStbWzCozWiFWXsVFgpdZ3EUlpjPTJa0b";
 
 function Currency() {
+    useEffect(() => {
+      console.log("Currency App Loaded");
+    }, []);
   const [amount, setAmount] = useState();
   const [fromCurrency, setFromCurrency] = useState("USD");
   const [toCurrency, setToCurrency] = useState("TRY");
