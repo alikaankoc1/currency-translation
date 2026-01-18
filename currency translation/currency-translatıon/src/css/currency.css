@@ -60,3 +60,60 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
+
+/* Responsive Tasarım */
+@media (max-width: 700px) {
+  .currency-div {
+    width: 95vw;
+    min-width: 0;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+  }
+  .amount,
+  .result,
+  .from-currency-option,
+  .to-currency-option {
+    width: 90vw;
+    max-width: 300px;
+    min-width: 100px;
+    height: 35px;
+    margin-bottom: 10px;
+  }
+  .arrow-right {
+    font-size: 24px;
+    margin: 10px 0;
+    display: block;
+  }
+  .title-currency {
+    font-size: 20px;
+    padding: 8px;
+  }
+  .currency-btn {
+    width: 100%;
+    max-width: 200px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .currency-div {
+    padding: 2vw;
+  }
+  .title-currency {
+    font-size: 16px;
+    padding: 5px;
+  }
+  .amount,
+  .result,
+  .from-currency-option,
+  .to-currency-option {
+    width: 80vw;
+    min-width: 60px;
+    font-size: 14px;
+  }
+  .currency-btn {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
